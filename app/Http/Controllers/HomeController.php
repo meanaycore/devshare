@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+
 class HomeController extends Controller
 {
     /**
@@ -21,13 +23,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index() {  return view('home'); }
+
+    public function signup() {  return view('register'); }
+
+    public function admin()
     {
-        return view('home');
+        $users = User::all();
+        return view('admin', ['users' => $users]);
     }
 
-    public function signup()
-    {
-        return view('register');
-    }
+    public function author() { return view('author'); }
+
 }
