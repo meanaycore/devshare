@@ -10,13 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::group(['middleware' => 'web'], function () {
   Route::get('/', function () {
     return view('home');
 })->name('main');
 
-    Route::get('/author', [
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/author', [
 
         'uses'  =>  'HomeController@getAuthorPage',
         'as'    =>  'author',
@@ -25,7 +28,7 @@ Route::group(['middleware' => 'web'], function () {
 
     ]);
 
-    Route::get('/author/generate-article', [
+Route::get('/author/generate-article', [
 
         'uses'  =>  'HomeController@getGenerateArticle',
         'as'    =>  'author.article',
@@ -34,7 +37,7 @@ Route::group(['middleware' => 'web'], function () {
 
     ]);
 
-    Route::get('/admin', [
+Route::get('/admin', [
 
         'uses'  =>  'HomeController@getAdminPage',
         'as'    =>  'admin',
@@ -43,7 +46,7 @@ Route::group(['middleware' => 'web'], function () {
 
     ]);
 
-    Route::post('/admin/assign-roles', [
+Route::post('/admin/assign-roles', [
 
         'uses'  =>  'HomeController@postAdminAssignRoles',
         'as'    =>  'admin.assign',
@@ -52,39 +55,38 @@ Route::group(['middleware' => 'web'], function () {
 
     ]);
 
-    Route::get('/signup', [
+Route::get('/signup', [
 
         'uses'  =>  'AuthController@getSignUpPage',
         'as'    =>  'signup'
 
     ]);
 
-    Route::post('/signup', [
+Route::post('/signup', [
 
         'uses'  =>  'AuthController@getSignUpPage',
         'as'    =>  'signup'
 
     ]);
 
-    Route::get('/signin', [
+Route::get('/signin', [
 
         'uses'  =>  'AuthController@getSignInPage',
         'as'    =>  'signin'
 
     ]);
 
-    Route::post('/signin', [
+Route::post('/signin', [
 
         'uses'  =>  'AuthController@postSignIn',
         'as'    =>  'signin'
 
     ]);
 
-    Route::get('/logout', [
+Route::get('/logout', [
 
         'uses'  =>  'AuthController@getLogout',
         'as'    =>  'logout'
 
     ]);
-
 });
