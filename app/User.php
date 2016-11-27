@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name','email', 'password',
     ];
 
     /**
@@ -32,7 +32,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
-    public hasAnyRole($roles)
+    public function hasAnyRole($roles)
     {
         if(is_array($roles))
         {
@@ -49,14 +49,14 @@ class User extends Authenticatable
             }
         }
         return false;
+    }
 
-        public function hasRole($role)
-        {
-          if($this->roles()->where('name', $role)->first())
-          {
-            return true;
-          }
-          return false;
-        }
+    public function hasRole($role)
+    {
+      if($this->roles()->where('name', $role)->first())
+      {
+        return true;
+      }
+      return false;
     }
 }

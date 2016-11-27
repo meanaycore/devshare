@@ -13,34 +13,42 @@
 
 Route::group(['middleware' => 'web'], function () {
   Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 })->name('main');
 
     Route::get('/author', [
 
         'uses'  =>  'HomeController@getAuthorPage',
-        'as'    =>  'author'
+        'as'    =>  'author',
+        'middleware' => 'roles',
+        'roles' => ['Admin', 'Author']
 
     ]);
 
     Route::get('/author/generate-article', [
 
         'uses'  =>  'HomeController@getGenerateArticle',
-        'as'    =>  'author.article'
+        'as'    =>  'author.article',
+        'middleware' => 'roles',
+        'roles' => ['Author']
 
     ]);
 
     Route::get('/admin', [
 
         'uses'  =>  'HomeController@getAdminPage',
-        'as'    =>  'admin'
-      
+        'as'    =>  'admin',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
+
     ]);
 
     Route::post('/admin/assign-roles', [
 
         'uses'  =>  'HomeController@postAdminAssignRoles',
-        'as'    =>  'admin.assign'
+        'as'    =>  'admin.assign',
+        'middleware' => 'roles',
+        'roles' => ['Admin']
 
     ]);
 

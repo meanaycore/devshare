@@ -10,7 +10,7 @@
               <th>Author</th>
               <th>Admin</th>
           </thead>
-          @forach ( $users as $user )
+          @foreach ( $users as $user )
               <tr>
                   <form action="{{ route('admin.assign') }}" method="POST">
                         <td>{{ $user->first_name }}</td>
