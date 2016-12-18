@@ -12,7 +12,7 @@
       </div>
       <div class="input-group">
           <label for="email">E-Mail</label>
-          <input type="email" id="email" name="last_name">
+          <input type="email" id="email" name="email">
       </div>
       <div class="input-group">
           <label for="password">Password</label>
@@ -21,4 +21,5 @@
       {{ csrf_field() }}
       <button type="submit">Sign Up</button>
   </form>
+  
 @endsection

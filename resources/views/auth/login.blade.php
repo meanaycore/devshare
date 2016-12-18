@@ -11,7 +11,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password">
         </div>
-        {{ csrf_field }}
+        {{ csrf_field() }}
         <button type="submit">Sign In</button>
     </form>
 @endsection

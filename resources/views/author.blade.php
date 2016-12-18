@@ -1,4 +1,4 @@
-@xtends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <h1>New Article</h1>

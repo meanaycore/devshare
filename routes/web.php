@@ -15,7 +15,6 @@ Route::group(['middleware' => 'web'], function () {
     return view('home');
 })->name('main');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
@@ -55,38 +54,30 @@ Route::post('/admin/assign-roles', [
 
     ]);
 
-Route::get('/signup', [
 
-        'uses'  =>  'AuthController@getSignUpPage',
-        'as'    =>  'signup'
-
+    Route::get('signup', [
+        'uses' => 'AuthController@getSignUpPage',
+        'as'    => 'signup'
     ]);
 
-Route::post('/signup', [
 
-        'uses'  =>  'AuthController@getSignUpPage',
-        'as'    =>  'signup'
-
+    Route::post('signup', [
+        'uses' => 'AuthController@postSignUp',
+        'as'    => 'signup'
     ]);
 
-Route::get('/signin', [
-
-        'uses'  =>  'AuthController@getSignInPage',
-        'as'    =>  'signin'
-
+    Route::get('signin', [
+        'uses' => 'AuthController@getSignInPage',
+        'as'    => 'signin'
     ]);
 
-Route::post('/signin', [
-
-        'uses'  =>  'AuthController@postSignIn',
-        'as'    =>  'signin'
-
+    Route::post('signin', [
+        'uses' => 'AuthController@postSignIn',
+        'as'    => 'signin'
     ]);
 
-Route::get('/logout', [
-
-        'uses'  =>  'AuthController@getLogout',
-        'as'    =>  'logout'
-
+    Route::get('logout', [
+        'uses' => 'AuthController@getLogout',
+        'as'    => 'logout'
     ]);
 });
